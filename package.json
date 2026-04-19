@@ -1,0 +1,10 @@
+{
+  "name": "magic-prompt",
+  "version": "1.0.0",
+  "description": "A plugin-based prompt transformation engine",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test tests/caveman.test.js"
+  },
+  "license": "MIT"
+}
