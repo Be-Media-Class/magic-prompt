@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --bmc-roxo: #7543b4;
+  --bmc-preto: #1d1d1d;
+  --bmc-azul: #123356;
+  --bmc-verde: #2ae19e;
+}
+
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+
+.bmc-gradient {
+  background: linear-gradient(135deg, #7543b4 0%, #123356 100%);
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.btn-roxo {
+  background: #7543b4;
+  color: white;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-roxo:hover {
+  background: #8a53d0;
+  transform: translateY(-1px);
+}
+
+.btn-verde {
+  background: #2ae19e;
+  color: #1d1d1d;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-verde:hover {
+  background: #3ffdb5;
+  transform: translateY(-1px);
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@keyframes pulse-verde {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animando {
+  animation: pulse-verde 1.5s ease-in-out infinite;
+}

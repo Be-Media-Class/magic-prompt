@@ -1,0 +1,18 @@
+# Ambiente
+.env
+.venv/
+__pycache__/
+*.pyc
+
+# Dados gerados
+backend/data/
+backend/static/images/
+
+# Node
+node_modules/
+.next/
+frontend/.next/
+
+# Sistema
+.DS_Store
+*.log
