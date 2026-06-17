@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Template de Carrossel</title>
+  <style>
+    :root {
+      --bg: #101820;
+      --surface: rgba(16, 24, 32, .88);
+      --text: #ffffff;
+      --muted: #d8dee6;
+      --primary: #2ae19e;
+      --secondary: #7543b4;
+      --font: Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #080b10; font-family: var(--font); color: var(--text); }
+    .deck { display: grid; gap: 32px; padding: 32px; justify-content: center; }
+    .slide {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      padding: 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(180deg, rgba(5,8,13,.45), rgba(5,8,13,.88)),
+        var(--image, linear-gradient(135deg, var(--bg), #172331));
+      background-size: cover;
+      background-position: center;
+      border: 3px solid var(--primary);
+    }
+    .top, .content, .footer { position: relative; z-index: 2; }
+    .top, .footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-size: 28px; font-weight: 800; text-transform: uppercase; }
+    .kicker { color: var(--primary); font-size: 30px; font-weight: 800; text-transform: uppercase; }
+    .content { display: grid; gap: 28px; max-width: 900px; }
+    h1 {
+      margin: 0;
+      padding: 30px 34px;
+      width: fit-content;
+      max-width: 900px;
+      background: var(--surface);
+      border: 3px solid var(--primary);
+      font-size: 82px;
+      line-height: .96;
+      font-weight: 900;
+    }
+    p {
+      margin: 0;
+      padding: 22px 28px;
+      width: fit-content;
+      max-width: 840px;
+      background: var(--surface);
+      border: 3px solid rgba(42,225,158,.72);
+      color: var(--muted);
+      font-size: 38px;
+      line-height: 1.14;
+      font-weight: 700;
+    }
+    .footer { color: var(--muted); font-size: 24px; font-weight: 700; }
+    .loop { color: var(--primary); }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide" style="--image: url('imagem-slide-01.png')">
+      <div class="top">
+        <div class="brand">Minha Marca</div>
+        <div class="kicker">Comece aqui</div>
+      </div>
+      <div class="content">
+        <h1>Uma promessa concreta</h1>
+        <p>Explique o beneficio em linguagem simples.</p>
+      </div>
+      <div class="footer">
+        <span class="loop">arraste para entender</span>
+        <span>@minhamarca · 01/03</span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

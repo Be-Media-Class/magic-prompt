@@ -1,0 +1,40 @@
+{
+  "titulo": "Titulo do carrossel",
+  "marca": {
+    "nome": "Minha Marca",
+    "handle": "@minhamarca"
+  },
+  "cta": "Comente GUIA para receber.",
+  "legenda": "Legenda complementar do carrossel.",
+  "slides": [
+    {
+      "numero": 1,
+      "tipo": "imagem",
+      "kicker": "Comece aqui",
+      "headline": "Uma promessa concreta",
+      "body": "Explique o beneficio em linguagem simples.",
+      "direcao_visual": "Cena realista ou editorial que mostre o problema.",
+      "imagem_obrigatoria": true,
+      "loop": "arraste para entender"
+    },
+    {
+      "numero": 2,
+      "tipo": "explicacao",
+      "kicker": "Na pratica",
+      "headline": "Mostre como funciona",
+      "body": "Use exemplo reconhecivel para o publico.",
+      "direcao_visual": "Imagem coerente ou layout forte com apoio visual.",
+      "imagem_obrigatoria": true,
+      "loop": "agora vem a aplicacao"
+    },
+    {
+      "numero": 3,
+      "tipo": "cta",
+      "kicker": "Proximo passo",
+      "headline": "Convide sem forcar",
+      "body": "Conecte a utilidade do post ao CTA.",
+      "direcao_visual": "Imagem de fechamento, download, guia ou proxima acao.",
+      "imagem_obrigatoria": true
+    }
+  ]
+}
