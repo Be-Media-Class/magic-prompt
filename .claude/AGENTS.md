@@ -1,8 +1,12 @@
 # Everything Claude Code (ECC) — Agent Instructions
 
-This is a **production-ready AI coding plugin** providing 67 specialized agents, 281 skills, 94 commands, and automated hook workflows for software development.
+This project installs a **trimmed subset** of the ECC toolkit (originally 67 agents, 280 skills, 94
+commands from the `full` profile), curated for Be Media Class's magic-prompt project: general
+engineering baseline (planning, review, security, TDD, docs) plus BMC's content/marketing/AI-media
+focus. No language-specific stack was installed since this repo has no code yet — see
+"Reinstalling library items" below.
 
-**Version:** 2.1.0
+**Version:** 2.1.0 (trimmed)
 
 ## Core Principles
 
@@ -21,32 +25,16 @@ This is a **production-ready AI coding plugin** providing 67 specialized agents,
 | tdd-guide | Test-driven development | New features, bug fixes |
 | code-reviewer | Code quality and maintainability | After writing/modifying code |
 | security-reviewer | Vulnerability detection | Before commits, sensitive code |
-| spec-miner | Brownfield spec extraction | Onboarding brownfield projects to spec-driven development |
-| build-error-resolver | Fix build/type errors | When build fails |
-| e2e-runner | End-to-end Playwright testing | Critical user flows |
 | refactor-cleaner | Dead code cleanup | Code maintenance |
 | doc-updater | Documentation and codemaps | Updating docs |
-| cpp-reviewer | C/C++ code review | C and C++ projects |
-| cpp-build-resolver | C/C++ build errors | C and C++ build failures |
-| fsharp-reviewer | F# functional code review | F# projects |
-| docs-lookup | Documentation lookup via Context7 | API/docs questions |
-| go-reviewer | Go code review | Go projects |
-| go-build-resolver | Go build errors | Go build failures |
-| kotlin-reviewer | Kotlin code review | Kotlin/Android/KMP projects |
-| kotlin-build-resolver | Kotlin/Gradle build errors | Kotlin build failures |
-| database-reviewer | PostgreSQL/Supabase specialist | Schema design, query optimization |
-| python-reviewer | Python code review | Python projects |
-| django-reviewer | Django code review | Django apps, DRF APIs, ORM, migrations |
-| django-build-resolver | Django build, migration, and setup errors | Django startup, dependency, migration, collectstatic failures |
-| java-reviewer | Java and Spring Boot code review | Java/Spring Boot projects |
-| java-build-resolver | Java/Maven/Gradle build errors | Java build failures |
-| loop-operator | Autonomous loop execution | Run loops safely, monitor stalls, intervene |
-| harness-optimizer | Harness config tuning | Reliability, cost, throughput |
-| rust-reviewer | Rust code review | Rust projects |
-| rust-build-resolver | Rust build errors | Rust build failures |
-| pytorch-build-resolver | PyTorch runtime/CUDA/training errors | PyTorch build/training failures |
-| mle-reviewer | Production ML pipeline review | ML pipelines, evals, serving, monitoring, rollback |
-| typescript-reviewer | TypeScript/JavaScript code review | TypeScript/JavaScript projects |
+| performance-optimizer | Bottleneck/perf analysis | Slow code, bundle size, runtime perf |
+| silent-failure-hunter | Swallowed errors, bad fallbacks | Reviewing error handling |
+| marketing-agent | Campaign planning, copy, positioning | BMC content/marketing work |
+| seo-specialist | Technical SEO, structured data, Core Web Vitals | Site/content SEO |
+
+No language-specific reviewer/build-resolver agents (TypeScript, Python, Go, Rust, Java, etc.) are
+installed — none matched actual code in this repo. Reinstall the one you need once the stack is
+chosen (see bottom of this file).
 
 ## Agent Orchestration
 
@@ -56,9 +44,6 @@ Use agents proactively without user prompt:
 - Bug fix or new feature → **tdd-guide**
 - Architectural decision → **architect**
 - Security-sensitive code → **security-reviewer**
-- Brownfield project onboarding → **spec-miner**
-- Autonomous loops / loop monitoring → **loop-operator**
-- Harness config reliability and cost → **harness-optimizer**
 
 Use parallel execution for independent operations — launch multiple agents simultaneously.
 
@@ -146,22 +131,38 @@ Troubleshoot failures: check test isolation → verify mocks → fix implementat
 
 **Context management:** Avoid last 20% of context window for large refactoring and multi-file features. Lower-sensitivity tasks (single edits, docs, simple fixes) tolerate higher utilization.
 
-**Build troubleshooting:** Use build-error-resolver agent → analyze errors → fix incrementally → verify after each fix.
+**Build troubleshooting:** once a language-specific build-resolver is reinstalled, use it → analyze errors → fix incrementally → verify after each fix.
 
-## Project Structure
+## Project Structure (trimmed install)
 
 ```
-agents/          — 67 specialized subagents
-skills/          — 281 workflow skills and domain knowledge
-commands/        — 94 slash commands
-hooks/           — Trigger-based automations
-rules/           — Always-follow guidelines (common + per-language)
-scripts/         — Cross-platform Node.js utilities
-mcp-configs/     — 14 MCP server configurations
-tests/           — Test suite
+agents/          — 11 stack-agnostic + BMC-relevant subagents (of 67 upstream)
+skills/          — 26 curated skills (of 280 upstream)
+commands/        — 25 slash commands (of 94 upstream)
+hooks/           — Trigger-based automations (installed, not wired into settings.json)
+rules/           — common/ only — no language-specific rule packs installed
+scripts/         — Cross-platform Node.js utilities (hook implementations)
+mcp-configs/     — MCP server configuration templates
 ```
 
 `commands/` remains in the repo for compatibility, but the long-term direction is skills-first.
+
+## Reinstalling library items
+
+Everything not installed here still exists upstream in [affaan-m/ECC](https://github.com/affaan-m/ECC)
+and is one command away. Once magic-prompt's stack is decided, pull in the matching pieces, e.g.:
+
+```bash
+git clone https://github.com/affaan-m/ECC.git /tmp/ecc-src && cd /tmp/ecc-src && npm install
+# Rules + reviewer/build-resolver agent for one language:
+node scripts/install-apply.js --target claude-project --modules framework-language --with typescript
+# A single skill by id:
+node scripts/install-apply.js --target claude-project --skills react-patterns
+```
+
+Run from the magic-prompt repo root (or pass an absolute path to the script) so files land in
+`./.claude/`. See `.claude/rules/ecc/README.md` and `node scripts/install-apply.js --help` in the
+ECC checkout for the full module/skill catalog.
 
 ## Success Metrics
 
